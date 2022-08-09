@@ -1,15 +1,15 @@
-import {createContext, useContext} from "react";
+import { createContext, useContext } from "react";
 
-const DepsContext = createContext({})
+export const DepContext = createContext({})
 
-export function useDeps() {
-    return useContext(DepsContext)
+export const useDeps = () => {
+    return useContext(DepContext)
 }
 
-export function DepsProvider({children, services}){
-    return (
-        <DepsContext.Provider value={services}>
-            {children}
-        </DepsContext.Provider>
-    )
+export function DepsProvider({children,services}) {
+  return (
+    <DepContext.Provider value={services}>
+        {children}
+    </DepContext.Provider>
+  )
 }

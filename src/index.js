@@ -3,25 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {setupStore} from "./store";
-import {Provider} from "react-redux";
-import { DepsProvider } from './context/depContext';
-import moreEffectService from './services/moreEffectService';
-import { ProductServiceRft } from './services/ProductServiceRft';
-import { ServiceFactory } from './services/ServiceFactory';
+import { DepsProvider } from './shared/DepContext';
+import { ServiceFactory } from './service/ServiceFactory';
 
-const store = setupStore();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const services = ServiceFactory()
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      {/* <DepsProvider services={{moreEffectService : moreEffectService()}}> */}
-      <DepsProvider services={{ProductServiceRft : ProductServiceRft()}}>
-      {/* <DepsProvider services={services}>   */}
-        <App />
-      </DepsProvider>
-    </Provider>
+    <DepsProvider services={services}>
+      <App />
+    </DepsProvider>
   </React.StrictMode>
 );
 
